@@ -15,7 +15,7 @@ categories = ["network-programming", "cryptography"]
 [dependencies]
 
 [build-dependencies]
-bindgen = "0.58"
+bindgen = "0.65.1"
 libc = "0.2"
 cmake = "0.1"
 

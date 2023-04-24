@@ -57,10 +57,15 @@ impl TcpStreamImpl {
         Ok(TcpStreamImpl { inner: socket })
     }
     pub fn write(&self, buf: &[u8]) -> io::Result<usize> {
-        let len = cmp::min(buf.len(), <size_t>::MAX as usize) as size_t;
+        let len = cmp::min(buf.len(), <u32>::MAX as usize) as u32;
         // TODO: Handle native error code, consider cvt?
-        let ret =
-            unsafe { zts_bsd_write(*self.inner.as_inner(), buf.as_ptr() as *const c_void, len) };
+        let ret = unsafe {
+            zts_bsd_write(
+                *self.inner.as_inner(),
+                buf.as_ptr() as *const c_void,
+                len as usize,
+            )
+        };
         Ok(ret as usize)
     }
     /*

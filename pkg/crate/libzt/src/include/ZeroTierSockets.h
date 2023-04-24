@@ -363,9 +363,9 @@ typedef enum {
 #if defined(_MSC_VER)
 #ifndef ssize_t
 // TODO: Should be SSIZE_T, would require lwIP patch
-// #include <BaseTsd.h>
-// typedef SSIZE_T ssize_t;
-typedef int ssize_t;
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+//typedef int ssize_t;
 #endif
 #else
 #include <unistd.h>

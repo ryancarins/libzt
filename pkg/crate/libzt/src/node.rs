@@ -103,7 +103,7 @@ impl ZeroTierNode {
     }
 
     pub fn delay(&self, interval_ms: u64) -> () {
-        unsafe { zts_util_delay(interval_ms) }
+        unsafe { zts_util_delay(interval_ms as u32) }
     }
 
     pub fn addr_get(&self, net_id: u64) -> Result<IpAddr, AddrParseError> {
